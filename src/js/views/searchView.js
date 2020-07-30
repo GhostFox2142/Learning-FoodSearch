@@ -1,6 +1,6 @@
 import { elements } from './base';
 import svg from '../../img/icons.svg';
-
+import jQuery from 'jquery';
 
 export const getInput = () => elements.searchInput.val();
 
@@ -10,9 +10,18 @@ export const clearInput = () => {
 
 export const clearResultList = () => {
     elements.searchResultList.empty();
+    elements.searchResPages.empty();
 };
 
-const recipeTitleReducer = (title, limit = 17) => {
+export const highlightSelected = (id) => {
+    const resArr = Array.from(jQuery('.results__link'));
+    resArr.forEach(el => {
+        jQuery(el).removeClass('results__link--active');
+    })
+    jQuery(`.results__link[href="#${id}"]`).addClass('results__link--active');
+}
+
+export const recipeTitleReducer = (title, limit = 17) => {
     const newTitle = [];
     if (title.length > limit) {
         title.split(' ').reduce((ac, cur) => {
@@ -50,11 +59,11 @@ const renderRecipe = recipe => {
  * @type {*} 'prev' or 'next' 
  */
 const createButton = (page, type) => `
-    <button class="btn-inline results__btn--${type} data-goto=${type === 'prev' ? page - 1 : page + 1}">
+    <button class="btn-inline results__btn--${type}" data-goto="${type === 'prev' ? page - 1 : page + 1}">
+        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
         <svg class="search__icon">
             <use href="${svg}#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
         </svg>
-        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
     </button>
 `;
 

@@ -10,7 +10,7 @@ export default class Serarch {
             const res = await axios.get(`https://forkify-api.herokuapp.com/api/search?q=${this.query}`);
             this.result = res.data.recipes;
         } catch (error) {
-            alert(error);
+            console.log(error);
         }
     }
 }

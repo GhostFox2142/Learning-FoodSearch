@@ -7,7 +7,11 @@ export const elements = {
     searchInput: jQuery('.search__field', document),
     searchResultList: jQuery('.results__list', document),
     searchRes: jQuery('.results'),
-    searchResPages: jQuery('.results__pages')
+    searchResPages: jQuery('.results__pages'),
+    recipe: jQuery('.recipe'),
+    shoping: jQuery('.shopping__list'),
+    likesMenu: jQuery('.likes__field'),
+    likesList: jQuery('.likes__list')
 };
 
 export const elementStrings = {
