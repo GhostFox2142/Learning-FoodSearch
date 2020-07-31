@@ -17,9 +17,10 @@ import Likes from './models/Likes';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
+import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 
-
+const state = {};
 /**
  * search control
  */
